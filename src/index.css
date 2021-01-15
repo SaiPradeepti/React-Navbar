@@ -202,7 +202,7 @@ nav {
     padding: 0;
   }
   .nav-toggle {
-    display: none;
+    /* display: none; */
   }
   .links-container {
     height: auto !important;
