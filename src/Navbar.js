@@ -4,15 +4,16 @@ import { links, social } from './data'
 import logo from './logo.svg'
 
 const Navbar = () => {
+  const [showLinks,setShowLinks] = useState(false);
   return <nav>
     <div className="nav-center">
       <div className="nav-header">
         <img src={logo} alt="logo"/>
-        <button className="nav-toggle">
+        <button className="nav-toggle" onClick={()=>setShowLinks(!showLinks)}>
           <FaBars />
         </button>
       </div>
-      <div className="link-container show-container">
+      <div className={`${showLinks?'links-container show-container':'links-container'}`}>
         <ul className="links">
           {
             links.map(link => {
@@ -26,26 +27,16 @@ const Navbar = () => {
           }
         </ul>
         <ul className="social-icons">
-          <li>
-            <a href="https://www.twitter.com">
-              <FaTwitter />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.twitter.com">
-              <FaTwitter />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.twitter.com">
-              <FaTwitter />
-            </a>
-          </li>
-          <li>
-            <a href="https://www.twitter.com">
-              <FaTwitter />
-            </a>
-          </li>
+          {
+            social.map(socialIcon => {
+              const {id,url,icon} = socialIcon;
+              return (
+                <li key={id}>
+                  <a href={url}>{icon}</a>
+                </li>
+              )
+            })
+          }
         </ul>
       </div>
       
